@@ -1,10 +1,13 @@
 // -------------------------------------------Imports----------------------------------------------------
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
+import authReducer from "../features/slices/authSlice/authSlice";
 
 // ------------------------------------------------------------------------------------------------------
 
-const reducer = combineReducers({});
+const reducer = combineReducers({
+  auth: authReducer,
+});
 
 const rootReducer = (state, action) => {
   if (action.type === "auth/clearReduxStoreData") {
