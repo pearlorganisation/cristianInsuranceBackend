@@ -18,7 +18,7 @@ const Faq = () => {
           <div className="row">
             <div className="co-md-12">
               <div className="page-header-box">
-                <h1 className="text-anime">Blogs</h1>
+                <h1 className="text-anime">Frequently Asked Questions</h1>
               </div>
             </div>
           </div>
