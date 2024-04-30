@@ -24,8 +24,9 @@ app.use(
           origin: [
             "http://localhost:5173",
             "https://cristian-insurance-mern.vercel.app/",
+            
           ],
-          credentials: true,
+          credentials: false,
         }
       : {
           origin: [
