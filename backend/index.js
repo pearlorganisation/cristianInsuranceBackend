@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import chalk from "chalk";
+
 import connectDB from "./src/configs/db.js";
 
 const app = express();
@@ -53,17 +53,15 @@ app.use("/", (req, res) => {
 
 app.listen(PORT, () => {
   connectDB();
-  console.log(chalk.yellow.underline.bold(`LISTENING TO PORT-${PORT}`));
+  console.log(`LISTENING TO PORT-${PORT}`);
 });
 
 //@@DESC:--------------unhandled promise rejection
 process.on("unhandledRejection", (err) => {
   console.log(err);
-  console.log(chalk.red.bold(`Shutting down the server for ${err.message}`));
+  console.log(`Shutting down the server for ${err.message}`);
 
-  console.log(
-    chalk.red.bold(`shutting down the server for unhandle promise rejection`)
-  );
+  console.log(`shutting down the server for unhandle promise rejection`);
 
   server.close(() => {
     process.exit(1);
