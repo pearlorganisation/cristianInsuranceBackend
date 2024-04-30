@@ -23,19 +23,18 @@ app.use(
       ? {
           origin: [
             "http://localhost:5173",
-            "https://cristian-insurance-mern.vercel.app/",
+            "https://cristian-insurance-mern.vercel.app",
             
-          ],
-          credentials: false,
+          ]
+      
         }
       : {
           origin: [
             "http://localhost:5173",
-            "https://cristian-insurance-mern.vercel.app/",
+            "https://cristian-insurance-mern.vercel.app",
           ],
           methods: ["GET", "PUT", "POST", "PATCH", "DELETE"],
-          allowedHeaders: ["Content-Type", "Authorization", "x-csrf-token"],
-          credentials: false,
+          allowedHeaders: ["Content-Type", "Authorization", "x-csrf-token"],        
           maxAge: 600,
           exposedHeaders: ["*", "Authorization"],
         }
