@@ -35,7 +35,7 @@ app.use(
           ],
           methods: ["GET", "PUT", "POST", "PATCH", "DELETE"],
           allowedHeaders: ["Content-Type", "Authorization", "x-csrf-token"],
-          credentials: true,
+          credentials: false,
           maxAge: 600,
           exposedHeaders: ["*", "Authorization"],
         }
