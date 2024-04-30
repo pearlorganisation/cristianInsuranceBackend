@@ -21,11 +21,17 @@ app.use(
   cors(
     process.env.NODE_ENV === "production"
       ? {
-          origin: ["http://localhost:3000"],
+          origin: [
+            "http://localhost:5173",
+            "https://cristian-insurance-mern.vercel.app/",
+          ],
           credentials: true,
         }
       : {
-          origin: ["http://localhost:3000"],
+          origin: [
+            "http://localhost:5173",
+            "https://cristian-insurance-mern.vercel.app/",
+          ],
           methods: ["GET", "PUT", "POST", "PATCH", "DELETE"],
           allowedHeaders: ["Content-Type", "Authorization", "x-csrf-token"],
           credentials: true,
