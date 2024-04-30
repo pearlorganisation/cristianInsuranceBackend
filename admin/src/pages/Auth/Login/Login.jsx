@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 // import { useForm } from 'react-hook-form';
 // import { generateLoginOTP } from '../../features/actions/auth/authenticationActions';
 // import { emailRegex, passwordRegex } from '../../utils/regex';
@@ -8,16 +8,20 @@ import { FaRegEyeSlash } from "react-icons/fa6";
 import { FaRegEye } from "react-icons/fa";
 import griffinLogo from "../../../assets/images/griffinLogo.png";
 import loginImage from "../../../assets/images/login2.jpg";
+import { login } from "../../../features/slices/authSlice/authSlice";
 // ----------------------------------------------------------------------------------
 const Login = () => {
   const [toggle, setToggle] = useState(false); // This usestate is used to toggle the password show and hide icons and input type.
   const [loginData, setLoginData] = useState({});
+  // ---------------------------------------Hooks-------------------------------------
+  const dispatch = useDispatch();
+  // ----------------------------------------------------------------------------------
 
   // This method is used to call Generate Login OTP Api once user click on Login Button.
   const loginHandler = (data) => {
     try {
-      setLoginData(data);
-      // dispatch(generateLoginOTP(data));
+      let userData = {};
+      dispatch(login({ ...userData, loginStatus: true }));
     } catch (error) {
       console.log(error?.message);
     }
@@ -51,6 +55,7 @@ const Login = () => {
                   placeholder="Password"
                 />
                 <button
+                  onClick={loginHandler}
                   class="mt-5 tracking-wide font-semibold bg-green-400 text-white-500 w-full py-4 rounded-lg text-white hover:bg-green-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                   style={{
                     background:

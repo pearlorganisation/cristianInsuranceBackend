@@ -26,7 +26,7 @@ function App() {
         },
         {
           path: "/login",
-          element: <Login />,
+          element: isUserLoggedIn ? <Dashboard /> : <Login />,
         },
       ],
     },
