@@ -3,7 +3,7 @@ import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import DefaultLayout from "./layout/DefaultLayout/DefaultLayout";
 import Login from "./pages/Auth/Login/Login";
-import LandingPage from "./pages/LandingPage/LandingPage";
+import Dashboard from "./pages/Dashboard/Dashboard";
 // -------------------------------------------------------------------------------------------------------
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
       children: [
         {
           path: "/",
-          element: <LandingPage />,
+          element: <Dashboard />,
         },
         {
           path: "/login",
