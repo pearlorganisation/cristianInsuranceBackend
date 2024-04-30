@@ -47,7 +47,7 @@ app.use("/api/v1/blogs", blogRoutes);
 app.use("/api/v1/faq", faqRoutes);
 app.use(error);
 
-app.use("/", () => {
+app.use("/", (req, res) => {
   res.send("Welcome!!");
 });
 
