@@ -1,15 +1,14 @@
 import blogs from "../models/blogs.js";
-import { asyncHandler } from "../utils/errorHandler.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
 
 // @desc - new blog
 // @route - POST api/v1/blog
 export const newBlog = asyncHandler(async (req, res, next) => {
-  console.log(req.body, req?.file?.path);
-  const newDoc = new blogs({
+  const newDoc = await blogs.create({
     ...req?.body,
     banner: req?.file?.path,
   });
-  const data = await newDoc.save();
+  // const data = await newDoc.save();
   res.status(201).json({ status: "true", message: "Created successfully!!" });
 });
 
