@@ -10,7 +10,10 @@ export const injectStore = (_store) => {
 export const instance = axios.create({
   withCredentials: true,
   headers: { "Content-Type": "application/json" },
-  baseURL: ``,
+  baseURL:
+    import.meta.env.REACT_APP_WORKING_ENVIRONMENT === "development"
+      ? `${import.meta.env.REACT_APP_DEV_API_URL}`
+      : `${import.meta.env.REACT_APP_DEV_API_URL}`,
 });
 
 instance.interceptors.request.use(

@@ -22,6 +22,7 @@ const Login = () => {
     try {
       let userData = {};
       dispatch(login({ ...userData, loginStatus: true }));
+      // dispatch(login)
     } catch (error) {
       console.log(error?.message);
     }
@@ -37,7 +38,7 @@ const Login = () => {
   return (
     <div class="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
       <div class="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
-        <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
+        <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12  flex justify-center items-center flex-col">
           <div className="flex justify-center">
             <img src={griffinLogo} class="w-mx-auto" />
           </div>
