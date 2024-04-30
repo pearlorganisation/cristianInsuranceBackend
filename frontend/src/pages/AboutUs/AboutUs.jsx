@@ -35,9 +35,9 @@ const AboutUs = () => {
                         
 
                         
-                        <div className="about-play-btn">
+                        {/* <div className="about-play-btn">
                             <a href="https://www.youtube.com/watch?v=u31qwQUeGuM" className="popup-video"><i className="fa-regular fa-circle-play"></i></a>
-                        </div>
+                        </div> */}
                         
                     </div>
                     
