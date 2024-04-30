@@ -1,5 +1,5 @@
 import faq from "../models/faq.js";
-import { asyncHandler } from "../utils/errorHandler.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
 import errorResponse from "../utils/errorResponse.js";
 
 export const newFaq = asyncHandler(async (req, res, next) => {
