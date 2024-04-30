@@ -21,11 +21,17 @@ app.use(
   cors(
     process.env.NODE_ENV === "production"
       ? {
-          origin: ["http://localhost:3000"],
+          origin: [
+            "http://localhost:5173",
+            "https://cristian-insurance-mern.vercel.app/",
+          ],
           credentials: true,
         }
       : {
-          origin: ["http://localhost:3000"],
+          origin: [
+            "http://localhost:5173",
+            "https://cristian-insurance-mern.vercel.app/",
+          ],
           methods: ["GET", "PUT", "POST", "PATCH", "DELETE"],
           allowedHeaders: ["Content-Type", "Authorization", "x-csrf-token"],
           credentials: true,
@@ -43,7 +49,7 @@ import blogRoutes from "./src/routes/blog.js";
 import faqRoutes from "./src/routes/faq.js";
 import authRoutes from "./src/routes/auth.js";
 import { error } from "./src/middlewares/error.js";
-import auth from "./src/models/auth.js";
+import auth from "./src/routes/auth.js";
 
 app.use("/api/v1/blogs", blogRoutes);
 app.use("/api/v1/auth", auth);

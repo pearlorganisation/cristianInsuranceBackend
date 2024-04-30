@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import errorResponse from "../utils/errorResponse.js";
 
 export const signup = asyncHandler(async (req, res, next) => {
+  console.log("hellololo ");
   const { password } = req?.body;
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -26,7 +27,7 @@ export const login = asyncHandler(async (req, res, next) => {
     password,
     isDataExists?.password
   );
-  if (isValidPassword) {
+  if (!isValidPassword) {
     return next(new errorResponse("Wrong password!! please try again", 400));
   }
 
