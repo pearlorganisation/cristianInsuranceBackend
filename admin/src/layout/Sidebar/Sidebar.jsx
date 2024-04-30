@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { GoTag } from "react-icons/go";
 import { Link, useNavigate } from "react-router-dom";
+import logo from "../../assets/images/griffinLogo.png";
 // ----------------------------------------------------------------------------------------------------------
 const SideBar = () => {
   // -----------------------------------------------States-----------------------------------------------------
@@ -98,14 +99,10 @@ const SideBar = () => {
             isSideNavOpen ? "translate-x-0" : " -translate-x-full"
           }`}
         >
-          <div className="flex justify-between items-center">
-            <a
-              aria-label="WindUI logo"
-              className="flex items-center gap-2 whitespace-nowrap p-6 text-3xl font-medium focus:outline-none text-white italic "
-              href="javascript:void(0)"
-            >
-              Insurance
-            </a>
+          <div className="flex justify-between items-center bg-white">
+            <div>
+              <img src={logo} alt="logo" />
+            </div>
             <div
               className="lg:hidden flex items-center rounded-xl text-white border-2 border-white  p-5 cursor-pointer"
               onClick={() => setIsSideNavOpen(false)}
