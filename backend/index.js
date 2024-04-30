@@ -41,9 +41,12 @@ app.use(express.json());
 
 import blogRoutes from "./src/routes/blog.js";
 import faqRoutes from "./src/routes/faq.js";
+import authRoutes from "./src/routes/auth.js";
 import { error } from "./src/middlewares/error.js";
+import auth from "./src/models/auth.js";
 
 app.use("/api/v1/blogs", blogRoutes);
+app.use("/api/v1/auth", auth);
 app.use("/api/v1/faq", faqRoutes);
 app.use(error);
 
