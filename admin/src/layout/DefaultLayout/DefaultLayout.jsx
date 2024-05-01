@@ -15,9 +15,9 @@ const DefaultLayout = () => {
       <div className="grid lg:grid-cols-[250px_auto]">
         <SideBar />
         <div>
-          <Header />
+          {/* <Header /> */}
           <Main />
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </div>
     </div>
