@@ -12,6 +12,27 @@ export const newBlog = asyncHandler(async (req, res, next) => {
   res.status(201).json({ status: "true", message: "Created successfully!!" });
 });
 
+
+
+// @desc - update blog
+// @route - POST api/v1/blog
+export const updateBlog = asyncHandler(async (req, res, next) => {
+
+  const {id} =req?.params
+  const {title,description} = req?.body
+
+
+const existingData= await blogs.findById(id)
+if (!existingData) return next(new errorResponse("No data found!!", 400));
+
+  const isValidId = await blogs.findByIdAndUpdate(id,{
+    banner: req?.file?.path || existingData?.banner,
+title,description }
+  );
+ 
+res.status(200).json({ status: true, message: "Updated successfully!!",isValidId });
+});
+
 // @desc - get all blogs
 // @route - get api/v1/blogs
 export const getAllBlog = asyncHandler(async (req, res, next) => {

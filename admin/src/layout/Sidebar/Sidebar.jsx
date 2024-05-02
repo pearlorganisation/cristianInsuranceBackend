@@ -39,6 +39,22 @@ const SideBar = () => {
       subMenu: false,
       path: "/plans",
     },
+    {
+      title: "Blog",
+      subMenu: true,
+      subMenuArray: [
+        { title: "Blogs", path: "/blog" },
+        { title: "Create Blog", path: "/blog/createBlog" },
+      ],
+    },
+    {
+      title: "Faq",
+      subMenu: true,
+      subMenuArray: [
+        { title: "Faqs", path: "/faq" },
+        { title: "Create faq", path: "/faq/createFaq" },
+      ],
+    },
   ];
   // ----------------------------------------------------------------------------------------------------------
 
@@ -121,7 +137,7 @@ const SideBar = () => {
               <ul className="flex flex-1 flex-col gap-1 py-3">
                 {sidebarOptions.map((option, index) => {
                   return option?.subMenu ? (
-                    <li className="px-3 dropdown relative">
+                    <li key={index} className="px-3 dropdown relative">
                       <div
                         onClick={() => {
                           toggleDropdown(index);
@@ -169,7 +185,7 @@ const SideBar = () => {
                       )}
                     </li>
                   ) : (
-                    <li className="px-3">
+                    <li key={index} className="px-3">
                       <Link
                         to={`${option?.path}`}
                         className="flex items-center gap-3 rounded p-3 text-white transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-red-500 aria-[current=page]:bg-emerald-500 aria-[current=page]:text-emerald-500 "

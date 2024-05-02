@@ -10,28 +10,10 @@ const CreateBlog = () => {
   const { blogData, isLoading } = useSelector((state) => state.blog);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [watchBannerName, setWatchBannerName] = useState({})
 
   
-    const [selectedFile, setSelectedFile] = useState(null);
   
-    const handleFileChange = (e) => {
-      const file = e.target.files[0];
-      setSelectedFile(file);
-    }
-
-
-  useEffect(() => {
-    // Add event listener to each textarea on component mount
-    document.querySelectorAll('textarea').forEach((textarea) => {
-      textarea.addEventListener('input', resizeTextarea);
-    });
-    // Remove event listener on component unmount
-    return () => {
-      document.querySelectorAll('textarea').forEach((textarea) => {
-        textarea.removeEventListener('input', resizeTextarea);
-      });
-    };
-  }, []);
 //   useEffect(() => {
 //     if (blogData?.status) {
 //       navigate('/blog');
@@ -43,29 +25,39 @@ const CreateBlog = () => {
     handleSubmit,
     formState: { errors },
     control,
+    watch
   } = useForm({
     defaultValues: {},
   });
 
+
   const onSubmit = (data) => {
     console.log(data)
     const formData = new FormData();
-    const { banner, ...rest } = data;
+    const { banner} = data;
 //     Array.from(selectedFile).forEach((img)=>
 // formData.append('banner',img))
     formData.append('banner', banner[0]);
     formData.append('description', data?.description);
     formData.append('title', data?.title);
+    
+    dispatch(createBlog(formData));
+  };
   
-    console.log(data);
-    dispatch(createBlog({ formData, rest }));
-  };
-  // Function to dynamically resize textarea
-  const resizeTextarea = (event) => {
-    const textarea = event.target;
-    textarea.style.height = 'auto';
-    textarea.style.height = textarea.scrollHeight + 'px';
-  };
+  const temp =  watch("banner")
+  useEffect(() => {
+   setWatchBannerName(temp)
+  }, [temp])
+  useEffect(() => {
+   console.log(watchBannerName,"watchBannerName")
+   console.log(Array.isArray(Array.from(watchBannerName || {})))
+    console.log(Array.from(watchBannerName || {}).length)
+    
+  }, [watchBannerName])
+  
+  
+
+
 
   const receiveTextEditorContent = (textEditorContent) => {
     if (textEditorContent) {
@@ -124,17 +116,15 @@ const CreateBlog = () => {
                         />
                       </svg>
                       <span className="font-medium text-gray-600">
-                      {selectedFile ? selectedFile.name : 'Drop files to Attach, or '}
-                        <span className="text-blue-600 underline ml-[4px]">
-                          browse
-                        </span>
-                      </span>
+              {Array.isArray(Array.from(watchBannerName || {})) && Array.from(watchBannerName || {}).length > 0 ? watchBannerName[0]?.name : 'Drop files to Attach, or '}
+              <span className="text-blue-600 underline ml-[4px]">browse</span>
+            </span>
                     </span>
                     <input
                       type="file"
                       {...register('banner', { required: 'banner is required' })}
                       className="hidden "
-                    //   onChange={handleFileChange}
+                 
                       accept="image/png,image/jpeg,image/webp"
                       id="input"
                     />

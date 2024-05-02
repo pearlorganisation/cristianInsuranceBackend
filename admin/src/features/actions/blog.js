@@ -56,7 +56,7 @@ export const updateBlog = createAsyncThunk(
 //create Blog api
 export const createBlog = createAsyncThunk(
   'createBlog',
-  async ({ formData }, { rejectWithValue }) => {
+  async (formData , { rejectWithValue }) => {
     try {
       const response = await instance.post(`/blogs`, formData, {
         withCredentials: false,

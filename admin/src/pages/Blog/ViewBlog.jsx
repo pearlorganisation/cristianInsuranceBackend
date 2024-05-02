@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {  useNavigate } from 'react-router';
 import { Stack,Skeleton } from '@mui/material';
 import { deleteBlog, getAllBlogs } from '../../features/actions/blog';
+import ViewBlogModal from './ViewBlogModal';
 // import ViewBlogModal from './ViewBlogModal';
 
 const ViewBlog = () => {
@@ -42,7 +43,7 @@ const ViewBlog = () => {
     setId(ID);
   };
   const handleAddBlog = () => {
-    navigate('/createBlog');
+    navigate('/blog/createBlog');
   };
 
   const handleViewModal=(item)=>{

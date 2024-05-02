@@ -14,11 +14,18 @@ export const getAllFaq = asyncHandler(async (req, res, next) => {
 });
 
 export const deleteFaq = asyncHandler(async (req, res, next) => {
-  const { id } = req?.params;
-  const isValidId = await faq.findByIdAndDelete(id);
-  if (!isValidId) {
-    return res.status(404).json({ status: false, message: "data not found" });
+  try {
+    const { id } = req?.params;
+    const isValidId = await faq.findByIdAndDelete(id);
+    if (!isValidId) {
+      return res.status(404).json({ status: false, message: "data not found" });
+    }
+    res.status(200).json({ status: true, message: "Faq deleted successfully!!" });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      message: error?.message || "Internal server error",
+    });
   }
-  await faq.findByIdAndDelete(id);
-  res.status(200).json({ status: true, message: "Faq deleted successfully!!" });
+  
 });

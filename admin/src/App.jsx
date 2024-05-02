@@ -40,11 +40,11 @@ function App() {
           element: isUserLoggedIn ? <Blog /> : <Login />,
         },
         {
-          path: "/createBlog",
+          path: "/blog/createBlog",
           element: isUserLoggedIn ? <CreateBlog /> : <Login />,
         },
         {
-          path: "/updateBlog/:id",
+          path: "/blog/updateBlog/:id",
           element: isUserLoggedIn ? <UpdateBlog /> : <Login />,
         },
         {
@@ -52,7 +52,7 @@ function App() {
           element: isUserLoggedIn ? <Faq /> : <Login />,
         },
         {
-          path: "/createFaq",
+          path: "/faq/createFaq",
           element: isUserLoggedIn ? <CreateFaq /> : <Login />,
         },
       ],

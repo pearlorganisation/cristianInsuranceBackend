@@ -37,7 +37,7 @@ const ViewFaqs = () => {
     setId(ID);
   };
   const handleAddFaq = () => {
-    navigate('/createFaq');
+    navigate('/faq/createFaq');
   };
 
 
@@ -90,10 +90,10 @@ const ViewFaqs = () => {
             Array.isArray(faqData) && faqData.length > 0 && faqData?.map((item, idx) => (
                   <tr key={idx}>
                     <td className="px-6 py-4 whitespace-nowrap">{idx+1}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {item?.question}
+                    <td className="px-6 py-4 whitespace-pre-wrap break-words">
+                     {item.question}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-4 whitespace-pre-wrap ">
                       {item?.answer}
                     </td>
 
