@@ -4,6 +4,6 @@ import { deleteBlog, getAllBlog, newBlog, updateBlog } from "../controllers/blog
 const router = express.Router();
 
 router.route("/").post(upload.single("banner"), newBlog).get(getAllBlog);
-router.route("/:id").delete(deleteBlog).put(upload.single("banner"),updateBlog);
+router.route("/:id").delete(deleteBlog).patch(upload.single("banner"),updateBlog);
 
 export default router;

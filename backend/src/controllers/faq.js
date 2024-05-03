@@ -29,3 +29,22 @@ export const deleteFaq = asyncHandler(async (req, res, next) => {
   }
   
 });
+
+export const updateFaq = asyncHandler(async (req, res, next) => {
+  try {
+    const { id } = req?.params;
+    const isValidId = await faq.findByIdAndUpdate(id,{
+ ...req.body
+    });
+    if (!isValidId) {
+      return res.status(404).json({ status: false, message: "data not found" });
+    }
+    res.status(200).json({ status: true, message: "Faq Updated successfully!!" });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      message: error?.message || "Internal server error",
+    });
+  }
+  
+});
