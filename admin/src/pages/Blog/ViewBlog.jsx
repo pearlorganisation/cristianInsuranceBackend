@@ -130,7 +130,7 @@ const ViewBlog = () => {
                       </button>
                       <button
                         onClick={() => {
-                          navigate(`/updateBlog/${item?._id}`, { state: item });
+                          navigate(`/blog/updateBlog/${item?._id}`, { state: item });
                         }}
                         className="py-2 px-3 font-semibold text-indigo-500 hover:text-indigo-600 duration-150 hover:bg-gray-50 rounded-lg"
                       >

@@ -100,7 +100,7 @@ const ViewFaqs = () => {
                     <td className="px-3 whitespace-nowrap">
                       <a
                         onClick={() => {
-                          navigate(`/updateFaq/${item._id}`, { state: item });
+                          navigate(`/faq/updateFaq/${item._id}`, { state: item });
                         }}
                         className="py-2 px-3 font-semibold text-indigo-500 hover:text-indigo-600 duration-150 hover:bg-gray-50 rounded-lg
                         "

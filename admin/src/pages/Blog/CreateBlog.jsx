@@ -14,11 +14,11 @@ const CreateBlog = () => {
 
   
   
-//   useEffect(() => {
-//     if (blogData?.status) {
-//       navigate('/blog');
-//     }
-//   }, [blogData]);
+  useEffect(() => {
+    if (blogData?.status) {
+      navigate('/blog');
+    }
+  }, [blogData]);
 
   const {
     register,
@@ -45,25 +45,19 @@ const CreateBlog = () => {
   };
   
   const temp =  watch("banner")
+  
   useEffect(() => {
    setWatchBannerName(temp)
   }, [temp])
-  useEffect(() => {
-   console.log(watchBannerName,"watchBannerName")
-   console.log(Array.isArray(Array.from(watchBannerName || {})))
-    console.log(Array.from(watchBannerName || {}).length)
+
+  // useEffect(() => {
+  //  console.log(watchBannerName,"watchBannerName")
+  //  console.log(Array.isArray(Array.from(watchBannerName || {})))
+  //   console.log(Array.from(watchBannerName || {}).length)
     
-  }, [watchBannerName])
+  // }, [watchBannerName])
   
-  
 
-
-
-  const receiveTextEditorContent = (textEditorContent) => {
-    if (textEditorContent) {
-      console.log('Receive textEditorContent:: ', textEditorContent);
-    }
-  };
 
   return (
     <div>
@@ -144,7 +138,7 @@ const CreateBlog = () => {
                 control={control}
                 render={({ field: { onChange, value, ref } }) => (
                   <ReactTextEditor
-                    sendContent={receiveTextEditorContent}
+                  
                     onChange={(data) => onChange(data)}
                   
                   />
@@ -160,7 +154,7 @@ const CreateBlog = () => {
             </div>
 
             <div style={{ marginTop: '4rem' }}>
-              <button className="w-full px-4 py-2 text-white font-medium bg-pink-700 hover:bg-slate-950 active:bg-indigo-600 rounded-lg duration-150">
+              <button className="w-full px-4 py-2 text-white font-medium bg-pink-700 hover:bg-pink-800 active:bg-pink-700 rounded-lg duration-150">
                 {isLoading ? <ClipLoader color="#c4c2c2" /> : <>Create</>}
               </button>
             </div>

@@ -15,6 +15,7 @@ import { Toaster } from "react-hot-toast";
 import UpdateBlog from "./pages/Blog/UpdateBlog";
 import Faq from "./pages/Faq/ViewFaq"
 import CreateFaq from "./pages/Faq/CreateFaq";
+import UpdateFaq from "./pages/Faq/UpdateFaq";
 // -------------------------------------------------------------------------------------------------------
 
 function App() {
@@ -54,6 +55,10 @@ function App() {
         {
           path: "/faq/createFaq",
           element: isUserLoggedIn ? <CreateFaq /> : <Login />,
+        },
+        {
+          path: "/faq/updateFaq/:id",
+          element: isUserLoggedIn ? <UpdateFaq /> : <Login />,
         },
       ],
     },

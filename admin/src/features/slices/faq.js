@@ -67,6 +67,7 @@ const faqSlice = createSlice({
       .addCase(updateFaq.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isUpdated = true;
+        state.faqData = action.payload?.data
         toast.success("Faq Updated successfully", {
           position: "top-right",
          }); 
@@ -75,6 +76,7 @@ const faqSlice = createSlice({
       .addCase(updateFaq.rejected, (state, action) => {
         state.isLoading = false;
         state.isUpdated = false;
+      
         state.errorMessage = action.payload;
         toast.error(state?.errorMessage, {
           position: "top-right",

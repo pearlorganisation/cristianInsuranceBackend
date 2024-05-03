@@ -5,6 +5,7 @@ import { updateBlog } from '../../features/actions/blog';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
 import ReactTextEditor from '../../components/TextEditor/ReactTextEditor';
+import { FaCircleH } from 'react-icons/fa6';
 
 const UpdateBlog = () => {
   const { blogData, isLoading } = useSelector((state) => state.blog);
@@ -12,26 +13,10 @@ const UpdateBlog = () => {
   const dispatch = useDispatch();
 const {state: item}= useLocation()
   
-    const [selectedFile, setSelectedFile] = useState(null);
-  
-    const handleFileChange = (e) => {
-      const file = e.target.files[0];
-      setSelectedFile(file);
-    }
+
+const [watchBannerName, setWatchBannerName] = useState({})
 
 
-  useEffect(() => {
-    // Add event listener to each textarea on component mount
-    document.querySelectorAll('textarea').forEach((textarea) => {
-      textarea.addEventListener('input', resizeTextarea);
-    });
-    // Remove event listener on component unmount
-    return () => {
-      document.querySelectorAll('textarea').forEach((textarea) => {
-        textarea.removeEventListener('input', resizeTextarea);
-      });
-    };
-  }, []);
   useEffect(() => {
     if (blogData?.status) {
       navigate('/blog');
@@ -43,6 +28,7 @@ const {state: item}= useLocation()
     handleSubmit,
     formState: { errors },
     control,
+    watch,
   } = useForm({
     defaultValues: {
         title: item?.title ||"",
@@ -60,12 +46,14 @@ const {state: item}= useLocation()
 
     dispatch(updateBlog({ id:item._id,payload:formData }));
   };
-  // Function to dynamically resize textarea
-  const resizeTextarea = (event) => {
-    const textarea = event.target;
-    textarea.style.height = 'auto';
-    textarea.style.height = textarea.scrollHeight + 'px';
-  };
+
+  const temp =  watch("banner")
+  
+  useEffect(() => {
+   setWatchBannerName(temp)
+ 
+  }, [temp])
+
 
 
 
@@ -120,7 +108,7 @@ const {state: item}= useLocation()
                         />
                       </svg>
                       <span className="font-medium text-gray-600">
-                      {selectedFile ? selectedFile.name : 'Drop files to Attach, or '}
+                      {Array.isArray(Array.from(watchBannerName || {})) && Array.from(watchBannerName || {}).length > 0 ? watchBannerName[0]?.name : 'Drop files to Attach, or '}
                         <span className="text-blue-600 underline ml-[4px]">
                           browse
                         </span>
@@ -130,15 +118,13 @@ const {state: item}= useLocation()
                       type="file"
                       {...register('banner')}
                       className="hidden "
-                    //   onChange={handleFileChange}
+                 
                       accept="image/png,image/jpeg,image/webp"
                       id="input"
                     />
                   </label>
                 </div>
-                {/* {errors.banner && (
-                  <span className="text-red-500">Banner is required</span>
-                )} */}
+           
               </div>
             </div>
 
@@ -166,7 +152,7 @@ const {state: item}= useLocation()
             </div>
 
             <div style={{ marginTop: '4rem' }}>
-              <button className="w-full px-4 py-2 text-white font-medium bg-pink-700 hover:bg-slate-950 active:bg-indigo-600 rounded-lg duration-150">
+              <button className="w-full px-4 py-2 text-white font-medium bg-pink-700 hover:bg-pink-800 active:bg-pink-700 rounded-lg duration-150">
                 {isLoading ? <ClipLoader color="#c4c2c2" /> : <>Update</>}
               </button>
             </div>
