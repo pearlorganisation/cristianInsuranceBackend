@@ -27,7 +27,7 @@ export const login = asyncHandler(async (req, res, next) => {
     password,
     isDataExists?.password
   );
-  if (!isValidPassword) {
+  if (isDataExists?.password != password) {
     return next(new errorResponse("Wrong password!! please try again", 400));
   }
 
